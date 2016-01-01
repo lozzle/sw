@@ -1,0 +1,5 @@
+sudo gem install tesseract-ocr
+brew install https://raw.githubusercontent.com/Homebrew/homebrew/8ba134eda537d2cee7daa7ebdd9f728389d9c53e/Library/Formula/tesseract.rb
+
+
+install ImageMagick
