@@ -6,11 +6,13 @@ $debug = true
 
 def wait_for_user(message)
   puts "#{message}.  Press enter to continue..."
-  gets
+  return gets.strip
 end
 
 while(true)
-  game_state = get_game_state
+  test_file = wait_for_user("Debug waiting.  Enter test file (optional)") if $debug
+  test_file = nil if test_file.empty?
+  game_state = get_game_state(test_file)
   case game_state.screen_state
     when :victory
       if game_state.is_fodder_maxed
@@ -30,5 +32,4 @@ while(true)
     when :team_comp
       puts "team comp, click start battle"
   end
-  wait_for_user("Debug waiting") if $debug
 end

@@ -22,8 +22,6 @@ class GameState
 end
 
 $debug = true;
-#$image_path = "test_images/reward_ok.png"
-$image_path = "curr.png"
 $all_whitelist = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890"
 
 def bin_and_crop(bin_amount, x, y, width, height)
@@ -31,8 +29,13 @@ def bin_and_crop(bin_amount, x, y, width, height)
   return "temp.png"
 end
 
-def get_game_state
-  system "adb shell screencap -p | perl -pe 's/\\x0D\\x0A/\\x0A/g' > #{$image_path}"
+def get_game_state(test_image = nil)
+  if (test_image)
+    $image_path = test_image
+  else
+    $image_path = "curr.png"
+    system "adb shell screencap -p | perl -pe 's/\\x0D\\x0A/\\x0A/g' > #{$image_path}"
+  end
   @ocrEngine = Tesseract::Engine.new {|e|
     e.language = :eng
     e.blacklist = "|"
