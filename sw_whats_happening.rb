@@ -22,6 +22,7 @@ class GameState
 end
 
 $debug = true;
+#$image_path = "test_images/reward_ok.png"
 $image_path = "curr.png"
 $all_whitelist = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890"
 
@@ -165,5 +166,3 @@ def is_team_comp_screen?
   end
   return text == "VS"
 end
-
-get_game_state
